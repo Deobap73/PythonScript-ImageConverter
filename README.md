@@ -149,7 +149,7 @@ If you would like to contribute to this project, please fork the repository and 
         <a href="https://github.com/Deobap73" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/github.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
         <a href="https://wa.me/+4917634644129" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/whatsapp.svg" alt="deolindobaptista" height="50" width="50" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
         <a href="mailto:contact@deolindobaptista.com" target="_blank">
-            <img src="https://github.com/Deobap73/Deobap73Pictures/blob/c3ebd3b8d7ef3169a38eaa12dc0db698d4a4c255/Assets/email.webp" alt="deolindobaptista" height="50" width="50" style="margin-left: 20px;" />
+            <img src="https://github.com/Deobap73/Deobap73Pictures/blob/main/Assets/email.png" alt="deolindobaptista" height="50" width="50" style="margin-left: 20px;" />
         </a>
     </p>
     <br> <br>
