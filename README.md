@@ -55,7 +55,11 @@ To set up the Image Converter, follow these steps:
 
      <br>
 
-   - **Ensure Python Scripts Directory is in PATH:** - Right-click on `This PC` or `Computer` on the desktop or in File Explorer. - Select `Properties`, then click on `Advanced system settings`. - In the `System Properties` window, click on the `Environment Variables` button. - In the `Environment Variables` window, find the `Path` variable under `System variables`, and click `Edit`. - Ensure that the path to the Python `Scripts` directory (e.g., `C:\Python39\Scripts`) is included. If not, click `New` and add the path.
+   - **Ensure Python Scripts Directory is in PATH:**
+   - Right-click on `This PC` or `Computer` on the desktop or in File Explorer. <br>
+   - Select `Properties`, then click on `Advanced system settings`. <br> - In the `System Properties` window, click on the `Environment Variables` button.
+   - In the `Environment Variables` window, find the `Path` variable under `System variables`, and click `Edit`.
+   - Ensure that the path to the Python `Scripts` directory (e.g., `C:\Python39\Scripts`) is included. If not, click `New` and add the path.
      <br>
 4. **Compile the Executable:**
    - Use PyInstaller to compile the script into an executable. Open Command Prompt as Administrator and run the following command:
