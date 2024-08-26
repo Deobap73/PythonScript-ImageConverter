@@ -143,7 +143,7 @@ If you would like to contribute to this project, please fork the repository and 
 
 - ## 📫 Be in contact with me:
   <br> <br>
-  **For any questions or support, please contact [your email] or open an issue on the repository.**
+  **For any questions or support, please contact or open an issue on the repository.**
     <p align="left">
         <a href="https://www.linkedin.com/in/deolindobaptista" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/linked-in-alt.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
         <a href="https://github.com/Deobap73" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/github.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
