@@ -134,11 +134,10 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you would like to contribute to this project, please fork the repository and submit a pull request. Contributions are welcome!
 
-- **Back-End Technologies**:
+- **Technologies used**:
 <br> <br>
   <p align="left">
-  <a href="https://nodejs.org/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/nodejs.svg" alt="nodejs" width="70" height="70"/> </a> &nbsp;&nbsp;&nbsp;&nbsp;   
-    <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/mongodb.svg" alt="mongoDB" width="70" height="70"/> </a>
+  <a href="https://www.python.org/n" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/python.svg" alt="python" width="70" height="70"/> </a> &nbsp;&nbsp;&nbsp;&nbsp;  
 </p>
 <br> <br>
 
