@@ -27,7 +27,7 @@ def remove_background_opencv(image_path):
 def adjust_dpi(image, dpi):
     width_inch, height_inch = image.size[0] / image.info['dpi'][0], image.size[1] / image.info['dpi'][1]
     new_size = (int(width_inch * dpi), int(height_inch * dpi))
-    return image.resize(new_size, Image.ANTIALIAS), dpi
+    return image.resize(new_size, Image.LANCZOS), dpi
 
 # GUI Application
 class ImageConverterApp:
