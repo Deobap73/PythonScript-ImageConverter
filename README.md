@@ -170,7 +170,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you would like to contribute to this project, please fork the repository and submit a pull request. Contributions are welcome!
 
-<<<<<<< HEAD
+
 <br> <br>
 
 - **Back-End Technologies**:
@@ -183,13 +183,13 @@ If you would like to contribute to this project, please fork the repository and 
 <br> <br>
   <p align="left">
   <a href="https://www.python.org/n" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/python.svg" alt="python" width="70" height="70"/> </a> &nbsp;&nbsp;&nbsp;&nbsp;  
->>>>>>> 62b1db04895c9a82b41ebccf9b7643ed22a7b1e5
+
 </p>
 
 <br> <br>
 
 - ## 📫 Be in contact with me:
-<<<<<<< HEAD
+
 
 <br> <br>
 
@@ -217,7 +217,7 @@ If you would like to contribute to this project, please fork the repository and 
         </a>
     </p>
     <br> <br>
->>>>>>> 62b1db04895c9a82b41ebccf9b7643ed22a7b1e5
+
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Deobap73)](https://github.com/anuraghazra/github-readme-stats)
 
