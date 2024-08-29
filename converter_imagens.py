@@ -25,7 +25,16 @@ def remove_background_opencv(image_path):
 
 # Function to adjust DPI
 def adjust_dpi(image, dpi):
-    width_inch, height_inch = image.size[0] / image.info['dpi'][0], image.size[1] / image.info['dpi'][1]
+    # Verifica se o DPI está disponível, caso contrário, usa 72 como padrão
+    if 'dpi' in image.info:
+        current_dpi = image.info['dpi']
+    else:
+        current_dpi = (72, 72)  # Assume um DPI padrão de 72
+
+    # Calcula o tamanho da imagem em polegadas usando o DPI atual
+    width_inch, height_inch = image.size[0] / current_dpi[0], image.size[1] / current_dpi[1]
+
+    # Redimensiona a imagem para o novo DPI
     new_size = (int(width_inch * dpi), int(height_inch * dpi))
     return image.resize(new_size, Image.LANCZOS), dpi
 
@@ -35,25 +44,19 @@ class ImageConverterApp:
         self.root = root
         self.root.title("Image Converter")
 
-        # Set the minimum size of the window
-        self.root.geometry("300x400")  # Set default size
-        self.root.minsize(500, 400)  # Minimum width and height
-        
-        # Set the background color of the window
-        self.root.configure(bg="#f0f0f0")  # Light gray background
+        self.root.geometry("300x400")
+        self.root.minsize(500, 400)
+        self.root.configure(bg="#f0f0f0")
 
-        # Title label with background and foreground color
         self.label_title = Label(root, text="Image Converter", font=("Arial", 16), bg="#f0f0f0", fg="#333333")
         self.label_title.pack(pady=10)
 
-        # Buttons with custom colors
         self.btn_input_folder = Button(root, text="Select Input Folder", command=self.select_input_folder, bg="#007BFF", fg="white")
         self.btn_input_folder.pack(pady=5)
 
         self.btn_output_folder = Button(root, text="Select Output Folder", command=self.select_output_folder, bg="#007BFF", fg="white")
         self.btn_output_folder.pack(pady=5)
 
-        # Labels and combo boxes with background and foreground color
         self.label_format = Label(root, text="Choose Output Format:", bg="#f0f0f0", fg="#333333")
         self.label_format.pack(pady=5)
 
@@ -68,8 +71,7 @@ class ImageConverterApp:
         self.combo_dpi.current(4)
         self.combo_dpi.pack(pady=5)
 
-        # Initialize the IntVar for Checkbutton
-        self.remove_bg_var = IntVar(value=0)  # Set to 0 (not checked) by default
+        self.remove_bg_var = IntVar(value=0)
         self.check_remove_bg = Checkbutton(root, text="Remove Background", variable=self.remove_bg_var, bg="#f0f0f0", fg="#333333")
         self.check_remove_bg.pack(pady=5)
 
@@ -78,6 +80,10 @@ class ImageConverterApp:
 
         self.label_status = Label(root, text="", fg="green", bg="#f0f0f0")
         self.label_status.pack(pady=5)
+
+        # Progress bar setup
+        self.progress = ttk.Progressbar(root, orient="horizontal", length=300, mode="determinate")
+        self.progress.pack(pady=10)
 
         self.input_dir = ""
         self.output_dir = ""
@@ -100,35 +106,45 @@ class ImageConverterApp:
         output_format = self.combo_format.get().lower()
         output_dpi = int(self.combo_dpi.get())
         remove_bg = self.remove_bg_var.get() == 1
-        supported_formats = ('.jpg', '.jpeg', '.png', '.webp', '.bmp')
+        supported_formats = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.ico', '.gif')
 
-        for filename in os.listdir(self.input_dir):
-            if filename.lower().endswith(supported_formats):
-                img_path = os.path.join(self.input_dir, filename)
+        # Get a list of files in the input directory
+        files = [f for f in os.listdir(self.input_dir) if f.lower().endswith(supported_formats)]
 
-                try:
-                    if filename.lower().endswith('.svg'):
-                        messagebox.showwarning("Warning", f"Skipping {filename}: SVG is not supported by Pillow.")
-                        continue
+        if not files:
+            messagebox.showinfo("No Images", "No supported image files found in the selected folder.")
+            return
+
+        # Configure progress bar
+        self.progress["maximum"] = len(files)
+        self.progress["value"] = 0
+
+        for idx, filename in enumerate(files):
+            img_path = os.path.join(self.input_dir, filename)
+
+            try:
+                with Image.open(img_path) as img:
+                    file_base_name = os.path.splitext(filename)[0]
 
                     if remove_bg and output_format == "png":
                         img_rgba = remove_background_opencv(img_path)
-                        output_file = f'{os.path.splitext(filename)[0]}.png'
+                        output_file = f'{file_base_name}.png'
                         output_path = os.path.join(self.output_dir, output_file)
                         cv2.imwrite(output_path, img_rgba)
                         self.label_status.config(text=f"Removed background and saved {filename} as {output_file}")
-
                     else:
-                        with Image.open(img_path) as img:
-                            file_base_name = os.path.splitext(filename)[0]
-                            img, dpi = adjust_dpi(img, output_dpi)
-                            output_file = f'{file_base_name}.{output_format}'
-                            output_path = os.path.join(self.output_dir, output_file)
-                            img.save(output_path, output_format.upper(), dpi=(dpi, dpi))
-                            self.label_status.config(text=f"Converted {filename} to {output_file}")
+                        img, dpi = adjust_dpi(img, output_dpi)
+                        output_file = f'{file_base_name}.{output_format}'
+                        output_path = os.path.join(self.output_dir, output_file)
+                        img.save(output_path, output_format.upper(), dpi=(dpi, dpi))
+                        self.label_status.config(text=f"Converted {filename} to {output_file}")
 
-                except Exception as e:
-                    messagebox.showerror("Error", f"Error processing {filename}: {e}")
+            except Exception as e:
+                messagebox.showerror("Error", f"Error processing {filename}: {e}")
+
+            # Update progress bar
+            self.progress["value"] += 1
+            self.root.update_idletasks()
 
         messagebox.showinfo("Done", "Batch conversion complete!")
 
