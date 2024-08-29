@@ -178,7 +178,7 @@ If you would like to contribute to this project, please fork the repository and 
 <p align="left">
 <a href="https://nodejs.org/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/nodejs.svg" alt="nodejs" width="70" height="70"/> </a> &nbsp;&nbsp;&nbsp;&nbsp;   
 <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/mongodb.svg" alt="mongoDB" width="70" height="70"/> </a>
-=======
+   <br> <br>
 - **Technologies used**:
 <br> <br>
   <p align="left">
@@ -200,7 +200,7 @@ If you would like to contribute to this project, please fork the repository and 
     <a href="https://github.com/Deobap73" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/github.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
     <a href="https://wa.me/+4917634644129" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/whatsapp.svg" alt="deolindobaptista" height="50" width="50" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
     <a href="mailto:contact@deolindobaptista.com" target="_blank">
-        <img src="https://github.com/Deobap73/Deobap73Pictures/blob/c3ebd3b8d7ef3169a38eaa12dc0db698d4a4c255/Assets/email.webp" alt="deolindobaptista" height="50" width="50" style="margin-left: 20px;" />
+        <img src="https://github.com/Deobap73/Deobap73Pictures/blob/c3ebd3b8d7ef3169a38eaa12dc0db698d4a4c255/Assets/email.png" alt="deolindobaptista" height="50" width="50" style="margin-left: 20px;" />
     </a>
 </p>
 
