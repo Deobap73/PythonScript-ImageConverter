@@ -64,8 +64,8 @@ To set up the Image Converter, follow these steps:
      - In the `Environment Variables` window, find the `Path` variable under `System variables`, and click `Edit`.
      - Ensure that the path to the Python `Scripts` directory (e.g., `C:\Python39\Scripts`) is included. If not, click `New` and add the path.
 
-HEAD
-=======
+## HEAD
+
    - **Ensure Python Scripts Directory is in PATH:**<br>
    - Right-click on `This PC` or `Computer` on the desktop or in File Explorer.
    - Select `Properties`, then click on `Advanced system settings`. <br> - In the `System Properties` window, click on the `Environment Variables` button.
@@ -87,6 +87,14 @@ HEAD
      cd dist
      ```
    - Double-click the `converter_imagens.exe` file or run it from the command prompt.
+
+<br> <br>
+
+## Zip file
+
+You also have converter_imagens.zip in your repository, which contains the executable.
+
+Just download and extract to a location of your choice and run without requiring any additional installation (virus-free)
 
 <br> <br>
 
