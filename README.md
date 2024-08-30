@@ -77,7 +77,7 @@ To set up the Image Converter, follow these steps:
 
    - Use PyInstaller to compile the script into an executable. Open Command Prompt as Administrator and run the following command:
      ```bash
-     pyinstaller --onefile --hidden-import=tkinter --icon=icon.ico converter_imagens.py
+     pyinstaller --onefile --noconsole converter_imagens.py
      ```
    - The executable will be created in the `dist` folder within the project directory.
 
