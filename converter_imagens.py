@@ -1,12 +1,12 @@
 import os
 from tkinter import Tk, Label, Button, filedialog, messagebox, Checkbutton, IntVar, ttk
 from PIL import Image
-import cv2
 import numpy as np
+import cv2
 
 # Function to remove the background using OpenCV's GrabCut
-def remove_background_opencv(image_path):
-    img = cv2.imread(image_path)
+def remove_background_opencv(image):
+    img = np.array(image.convert('RGB'))  # Convert PIL image to numpy array
     mask = np.zeros(img.shape[:2], np.uint8)
 
     bgd_model = np.zeros((1, 65), np.float64)
@@ -21,22 +21,24 @@ def remove_background_opencv(image_path):
     img_rgba = cv2.cvtColor(img, cv2.COLOR_BGR2BGRA)
     img_rgba[:, :, 3] = mask2 * 255
 
-    return img_rgba
+    return Image.fromarray(img_rgba, 'RGBA')
 
-# Function to adjust DPI
-def adjust_dpi(image, dpi):
-    # Verifica se o DPI está disponível, caso contrário, usa 72 como padrão
-    if 'dpi' in image.info:
-        current_dpi = image.info['dpi']
-    else:
-        current_dpi = (72, 72)  # Assume um DPI padrão de 72
+# Function to resize image and adjust DPI
+def adjust_dpi_and_resize(image, target_dpi):
+    original_dpi = image.info.get('dpi', (96, 96))
+    original_size = image.size  # (width, height) in pixels
+    
+    # Calculate target size in pixels based on target DPI
+    target_size = (int(original_size[0] * target_dpi / original_dpi[0]), 
+                   int(original_size[1] * target_dpi / original_dpi[1]))
 
-    # Calcula o tamanho da imagem em polegadas usando o DPI atual
-    width_inch, height_inch = image.size[0] / current_dpi[0], image.size[1] / current_dpi[1]
+    # Resize the image to the new target size while maintaining quality
+    resized_image = image.resize(target_size, Image.LANCZOS)
 
-    # Redimensiona a imagem para o novo DPI
-    new_size = (int(width_inch * dpi), int(height_inch * dpi))
-    return image.resize(new_size, Image.LANCZOS), dpi
+    # Update DPI information
+    resized_image.info['dpi'] = (target_dpi, target_dpi)
+
+    return resized_image
 
 # GUI Application
 class ImageConverterApp:
@@ -104,7 +106,7 @@ class ImageConverterApp:
             return
 
         output_format = self.combo_format.get().lower()
-        output_dpi = int(self.combo_dpi.get())
+        target_dpi = int(self.combo_dpi.get())
         remove_bg = self.remove_bg_var.get() == 1
         supported_formats = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.ico', '.gif')
 
@@ -126,18 +128,25 @@ class ImageConverterApp:
                 with Image.open(img_path) as img:
                     file_base_name = os.path.splitext(filename)[0]
 
-                    if remove_bg and output_format == "png":
-                        img_rgba = remove_background_opencv(img_path)
-                        output_file = f'{file_base_name}.png'
-                        output_path = os.path.join(self.output_dir, output_file)
-                        cv2.imwrite(output_path, img_rgba)
-                        self.label_status.config(text=f"Removed background and saved {filename} as {output_file}")
+                    # Convert image to desired format
+                    if output_format == "png":
+                        img = img.convert("RGBA")  # Ensure image is in RGBA mode for PNG
                     else:
-                        img, dpi = adjust_dpi(img, output_dpi)
-                        output_file = f'{file_base_name}.{output_format}'
-                        output_path = os.path.join(self.output_dir, output_file)
-                        img.save(output_path, output_format.upper(), dpi=(dpi, dpi))
-                        self.label_status.config(text=f"Converted {filename} to {output_file}")
+                        img = img.convert("RGB")  # Convert to RGB for other formats
+
+                    # Adjust DPI and resize
+                    img_resized = adjust_dpi_and_resize(img, target_dpi)
+
+                    # Remove background if necessary
+                    if remove_bg and output_format == "png":
+                        img_resized = remove_background_opencv(img_resized)
+
+                    # Save the output file
+                    output_file = f'{file_base_name}.{output_format}'
+                    output_path = os.path.join(self.output_dir, output_file)
+                    img_resized.save(output_path, output_format.upper(), dpi=(target_dpi, target_dpi))
+
+                    self.label_status.config(text=f"Converted {filename} to {output_file}")
 
             except Exception as e:
                 messagebox.showerror("Error", f"Error processing {filename}: {e}")
