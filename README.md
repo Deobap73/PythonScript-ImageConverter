@@ -57,9 +57,9 @@ To set up the Image Converter, follow these steps:
      - Search for `cmd` or `Command Prompt` in the Start menu.
      - Right-click on `Command Prompt` and select `Run as administrator`.
 
-   - **Ensure Python Scripts Directory is in PATH:**
+   - **Ensure Python Scripts Directory is in PATH: ( in Windows 10 or above)**
      - Right-click on `This PC` or `Computer` on the desktop or in File Explorer.
-     - Select `Properties`, then click on `Advanced system settings`.
+     - Select `Settings`, then click on `System`, then click on `About` and finally click on `Advanced system settings`.
      - In the `System Properties` window, click on the `Environment Variables` button.
      - In the `Environment Variables` window, find the `Path` variable under `System variables`, and click `Edit`.
      - Ensure that the path to the Python `Scripts` directory (e.g., `C:\Python39\Scripts`) is included. If not, click `New` and add the path.
