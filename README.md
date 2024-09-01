@@ -66,18 +66,18 @@ To set up the Image Converter, follow these steps:
 
 ## HEAD
 
-   - **Ensure Python Scripts Directory is in PATH:**<br>
-   - Right-click on `This PC` or `Computer` on the desktop or in File Explorer.
-   - Select `Properties`, then click on `Advanced system settings`. <br> - In the `System Properties` window, click on the `Environment Variables` button.
-   - In the `Environment Variables` window, find the `Path` variable under `System variables`, and click `Edit`.
-   - Ensure that the path to the Python `Scripts` directory (e.g., `C:\Python39\Scripts`) is included. If not, click `New` and add the path.
-     <br><br>
+- **Ensure Python Scripts Directory is in PATH:**<br>
+- Right-click on `This PC` or `Computer` on the desktop or in File Explorer.
+- Select `Properties`, then click on `Advanced system settings`. <br> - In the `System Properties` window, click on the `Environment Variables` button.
+- In the `Environment Variables` window, find the `Path` variable under `System variables`, and click `Edit`.
+- Ensure that the path to the Python `Scripts` directory (e.g., `C:\Python39\Scripts`) is included. If not, click `New` and add the path.
+  <br><br>
 
 4. **Compile the Executable:**
 
    - Use PyInstaller to compile the script into an executable. Open Command Prompt as Administrator and run the following command:
      ```bash
-     pyinstaller --onefile --noconsole converter_imagens.py
+     pyinstaller --clean --noconsole --onefile --icon=icon.ico converter_imagens.py
      ```
    - The executable will be created in the `dist` folder within the project directory.
 
@@ -178,7 +178,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you would like to contribute to this project, please fork the repository and submit a pull request. Contributions are welcome!
 
-
 <br> <br>
 
 - **Back-End Technologies**:
@@ -190,14 +189,13 @@ If you would like to contribute to this project, please fork the repository and 
 - **Technologies used**:
 <br> <br>
   <p align="left">
-  <a href="https://www.python.org/n" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/python.svg" alt="python" width="70" height="70"/> </a> &nbsp;&nbsp;&nbsp;&nbsp;  
+  <a href="https://www.python.org/n" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/python.svg" alt="python" width="70" height="70"/> </a> &nbsp;&nbsp;&nbsp;&nbsp;
 
 </p>
 
 <br> <br>
 
 - ## 📫 Be in contact with me:
-
 
 <br> <br>
 
@@ -212,20 +210,19 @@ If you would like to contribute to this project, please fork the repository and 
     </a>
 </p>
 
-<br> <br>
-=======
-  <br> <br>
-  **For any questions or support, please contact or open an issue on the repository.**
-    <p align="left">
-        <a href="https://www.linkedin.com/in/deolindobaptista" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/linked-in-alt.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
-        <a href="https://github.com/Deobap73" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/github.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
-        <a href="https://wa.me/+4917634644129" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/whatsapp.svg" alt="deolindobaptista" height="50" width="50" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;   
-        <a href="mailto:contact@deolindobaptista.com" target="_blank">
-            <img src="https://github.com/Deobap73/Deobap73Pictures/blob/main/Assets/email.png" alt="deolindobaptista" height="50" width="50" style="margin-left: 20px;" />
-        </a>
-    </p>
-    <br> <br>
+# <br> <br>
 
+<br> <br>
+**For any questions or support, please contact or open an issue on the repository.**
+<p align="left">
+<a href="https://www.linkedin.com/in/deolindobaptista" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/linked-in-alt.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;  
+ <a href="https://github.com/Deobap73" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/github.svg" alt="deolindobaptista" height="50" width="60" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;  
+ <a href="https://wa.me/+4917634644129" target="blank"><img src="https://raw.githubusercontent.com/Deobap73/Deobap73Pictures/main/Assets/whatsapp.svg" alt="deolindobaptista" height="50" width="50" style="margin-right: 20px;" /></a>&nbsp;&nbsp;&nbsp;&nbsp;  
+ <a href="mailto:contact@deolindobaptista.com" target="_blank">
+<img src="https://github.com/Deobap73/Deobap73Pictures/blob/main/Assets/email.png" alt="deolindobaptista" height="50" width="50" style="margin-left: 20px;" />
+</a>
+</p>
+<br> <br>
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Deobap73)](https://github.com/anuraghazra/github-readme-stats)
 

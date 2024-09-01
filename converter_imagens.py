@@ -23,19 +23,23 @@ def remove_background_opencv(image):
 
     return Image.fromarray(img_rgba, 'RGBA')
 
-# Function to resize image and adjust DPI
-def adjust_dpi_and_resize(image, target_dpi):
+# Function to adjust DPI, with optional resampling
+def adjust_dpi_and_resize(image, target_dpi, resample):
     original_dpi = image.info.get('dpi', (96, 96))
     original_size = image.size  # (width, height) in pixels
-    
-    # Calculate target size in pixels based on target DPI
-    target_size = (int(original_size[0] * target_dpi / original_dpi[0]), 
-                   int(original_size[1] * target_dpi / original_dpi[1]))
 
-    # Resize the image to the new target size while maintaining quality
-    resized_image = image.resize(target_size, Image.LANCZOS)
+    if resample:
+        # Calculate target size in pixels based on target DPI (to maintain physical size)
+        target_size = (int(original_size[0] * target_dpi / original_dpi[0]), 
+                       int(original_size[1] * target_dpi / original_dpi[1]))
+        
+        # Resize the image to the new target size while maintaining quality
+        resized_image = image.resize(target_size, Image.LANCZOS)
+    else:
+        # No resampling; keep the same number of pixels but change the DPI
+        resized_image = image.copy()
 
-    # Update DPI information
+    # Update DPI information (without changing size if resample is off)
     resized_image.info['dpi'] = (target_dpi, target_dpi)
 
     return resized_image
@@ -77,6 +81,11 @@ class ImageConverterApp:
         self.check_remove_bg = Checkbutton(root, text="Remove Background", variable=self.remove_bg_var, bg="#f0f0f0", fg="#333333")
         self.check_remove_bg.pack(pady=5)
 
+        # Checkbox for Resample option
+        self.resample_var = IntVar(value=0)
+        self.check_resample = Checkbutton(root, text="Resample Image", variable=self.resample_var, bg="#f0f0f0", fg="#333333")
+        self.check_resample.pack(pady=5)
+
         self.btn_convert = Button(root, text="Convert Images", command=self.convert_images, bg="#28a745", fg="white")
         self.btn_convert.pack(pady=10)
 
@@ -108,6 +117,7 @@ class ImageConverterApp:
         output_format = self.combo_format.get().lower()
         target_dpi = int(self.combo_dpi.get())
         remove_bg = self.remove_bg_var.get() == 1
+        resample = self.resample_var.get() == 1
         supported_formats = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.ico', '.gif')
 
         # Get a list of files in the input directory
@@ -134,8 +144,8 @@ class ImageConverterApp:
                     else:
                         img = img.convert("RGB")  # Convert to RGB for other formats
 
-                    # Adjust DPI and resize
-                    img_resized = adjust_dpi_and_resize(img, target_dpi)
+                    # Adjust DPI and resize (with or without resampling)
+                    img_resized = adjust_dpi_and_resize(img, target_dpi, resample)
 
                     # Remove background if necessary
                     if remove_bg and output_format == "png":
